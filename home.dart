@@ -22,7 +22,15 @@ class _HomeState extends State<Home> {
   }
 
   initCamera() {
-    cameraController = CameraController(cameras![0], ResolutionPreset.medium);
+    // cameraController = CameraController(cameras![0], ResolutionPreset.medium);
+    cameraController = CameraController(
+        CameraDescription(
+          name: '0', // 0 for back camera and 1 for front camera
+          lensDirection: CameraLensDirection.back,
+          sensorOrientation: 0,
+        ),
+        ResolutionPreset.medium);
+
     cameraController!.initialize().then(
       (value) {
         if (!mounted) {
