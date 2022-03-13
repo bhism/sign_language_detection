@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:tflite/tflite.dart';
 import 'home.dart';
 
 List<CameraDescription>? cameras;
@@ -29,6 +30,20 @@ class FirstScreen extends StatefulWidget {
 }
 
 class _FirstScreenState extends State<FirstScreen> {
+  loadmodel() async {
+    Tflite.loadModel(
+      model: "assets/detect.tflite",
+      labels: "assets/labels.txt",
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    loadmodel();
+  }
+
   @override
   Widget build(BuildContext context) {
     var h = MediaQuery.of(context).size.height;
