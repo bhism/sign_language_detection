@@ -10,19 +10,22 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  String answer = '';
+  String answer = "";
   CameraController? cameraController;
   CameraImage? cameraImage;
 
   loadmodel() async {
     Tflite.loadModel(
-      model: 'assets/model_unquant.tflite',
-      labels: 'assets/labels.txt',
+      model: "assets/detect.tflite",
+      labels: "assets/labels.txt",
     );
   }
 
   initCamera() {
+
     // cameraController = CameraController(cameras![0], ResolutionPreset.medium);
+
+    // OR
     cameraController = CameraController(
         CameraDescription(
           name: '0', // 0 for back camera and 1 for front camera
@@ -30,6 +33,11 @@ class _HomeState extends State<Home> {
           sensorOrientation: 0,
         ),
         ResolutionPreset.medium);
+
+
+
+
+
 
     cameraController!.initialize().then(
       (value) {
@@ -42,7 +50,13 @@ class _HomeState extends State<Home> {
               (image) => {
                 if (true)
                   {
+                    // setState(
+                    //   () {
+                    //     cameraImage = image;
+                    //   },
+                    // ),
                     cameraImage = image,
+
                     applymodelonimages(),
                   }
               },
@@ -95,7 +109,7 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     initCamera();
-    loadmodel();
+    // loadmodel();
   }
 
   @override
