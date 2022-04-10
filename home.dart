@@ -13,7 +13,9 @@ class _HomeState extends State<Home> {
   String answer = "";
   CameraController? cameraController;
   CameraImage? cameraImage;
-
+  
+  
+//  change the model name in main file at line number 35,36 
 //   loadmodel() async {
 //     Tflite.loadModel(
 //       model: "assets/detect.tflite",
