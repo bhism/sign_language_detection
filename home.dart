@@ -14,12 +14,12 @@ class _HomeState extends State<Home> {
   CameraController? cameraController;
   CameraImage? cameraImage;
 
-  loadmodel() async {
-    Tflite.loadModel(
-      model: "assets/detect.tflite",
-      labels: "assets/labels.txt",
-    );
-  }
+//   loadmodel() async {
+//     Tflite.loadModel(
+//       model: "assets/detect.tflite",
+//       labels: "assets/labels.txt",
+//     );
+//   }
 
   initCamera() {
 
